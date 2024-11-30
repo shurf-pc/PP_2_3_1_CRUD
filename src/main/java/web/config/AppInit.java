@@ -7,6 +7,7 @@ public class AppInit extends AbstractAnnotationConfigDispatcherServletInitialize
     // Метод, указывающий на класс конфигурации
     @Override
     protected Class<?>[] getRootConfigClasses() {
+        System.out.println("getRootConfigClasses method called");
         return null;
     }
 
