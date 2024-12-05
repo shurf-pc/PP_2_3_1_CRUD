@@ -23,7 +23,7 @@ public class UserController {
     @PostMapping(value = "/updateUser", consumes = "application/x-www-form-urlencoded;charset=UTF-8")
     @ResponseBody
     public String updateUser(@RequestParam Long id, @RequestParam String name, @RequestParam String email) {
-        if(name.isEmpty() || email.isEmpty()) {
+        if (name.isEmpty() || email.isEmpty()) {
             return "success=false";
         }
         if (userService.updateUser(new User(id, name, email))) {
@@ -33,15 +33,15 @@ public class UserController {
         }
     }
 
-    @PostMapping(value ="/addUser", consumes = "application/x-www-form-urlencoded;charset=UTF-8")
+    @PostMapping(value = "/addUser", consumes = "application/x-www-form-urlencoded;charset=UTF-8")
     @ResponseBody
     public String addUser(@RequestParam String name, @RequestParam String email) {
-        if(name.isEmpty() || email.isEmpty()) {
+        if (name.isEmpty() || email.isEmpty()) {
             return "success=false";
         }
         Long id = userService.addUser(name, email);
-        if ( id != -1) {
-            return "success=true" + "&id="+ id + "&name=" + name + "&email=" + email;
+        if (id != -1) {
+            return "success=true" + "&id=" + id + "&name=" + name + "&email=" + email;
         } else {
             return "success=false";
         }

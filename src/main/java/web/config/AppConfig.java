@@ -1,10 +1,8 @@
 package web.config;
 
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -18,7 +16,6 @@ import java.util.Properties;
 @Configuration
 @ComponentScan("web")
 @EnableTransactionManagement
-@PropertySource("classpath:db.properties")
 public class AppConfig {
     @Bean
     public DataSource dataSource() {
@@ -33,7 +30,6 @@ public class AppConfig {
 
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
-        System.out.println("entityManagerFactory called");
         LocalContainerEntityManagerFactoryBean entityManager = new LocalContainerEntityManagerFactoryBean();
         entityManager.setDataSource(dataSource());
         entityManager.setPackagesToScan("web.model");
@@ -49,7 +45,6 @@ public class AppConfig {
         transactionManager.setEntityManagerFactory(entityManagerFactory().getObject());
         return transactionManager;
     }
-
 
 
     private Properties additionalProperties() {

@@ -1,6 +1,5 @@
 package web.dao;
 
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import web.model.User;
 
@@ -47,7 +46,6 @@ public class UserDaoImp implements UserDao {
         } catch (Exception e) {
             return false;
         }
-
     }
 
     @Override

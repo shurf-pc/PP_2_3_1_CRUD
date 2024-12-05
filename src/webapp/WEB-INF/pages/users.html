@@ -17,8 +17,8 @@
         }
 
         table {
-            width: min-content; /* Таблица будет шириной, необходимой для содержимого */
-            min-width: 800px; /* Минимальная ширина таблицы */
+            width: min-content;
+            min-width: 800px;
             border-collapse: collapse;
             margin-bottom: 20px;
         }
@@ -34,13 +34,13 @@
         }
 
         th:first-child, td:first-child {
-            width: 1%; /* Устанавливаем минимальную ширину для столбца ID */
-            white-space: nowrap; /* Запрещаем перенос текста */
+            width: 1%;
+            white-space: nowrap;
         }
 
         th:last-child, td:last-child {
-            width: 120px; /* Фиксированная ширина для столбца с кнопками */
-            white-space: nowrap; /* Запрещаем перенос текста */
+            width: 155px;
+            white-space: nowrap;
         }
 
         .edit-input {
@@ -114,13 +114,11 @@
         </tbody>
     </table>
 
-    <!-- Контейнер для кнопки "Добавить пользователя" -->
     <div class="add-user-container">
         <button onclick="addUserRow()">Добавить пользователя</button>
     </div>
 </div>
 
-<!-- Модальное окно -->
 <div id="myModal" class="modal">
     <div class="modal-content">
         <span class="close">&times;</span>
@@ -134,7 +132,6 @@
         const nameCell = row.cells[1];
         const emailCell = row.cells[2];
 
-        // Создаем поля ввода
         const nameInput = document.createElement('input');
         nameInput.type = 'text';
         nameInput.value = nameCell.innerText;
@@ -145,14 +142,12 @@
         emailInput.value = emailCell.innerText;
         emailInput.className = 'edit-input';
 
-        // Заменяем текст на поля ввода
         nameCell.innerText = '';
         nameCell.appendChild(nameInput);
 
         emailCell.innerText = '';
         emailCell.appendChild(emailInput);
 
-        // Меняем текст кнопки на "Сохранить"
         button.innerText = 'Сохранить';
         button.onclick = function () {
             saveRow(button, nameInput, emailInput);
@@ -231,26 +226,22 @@
         const emailCell = newRow.insertCell(2);
         const actionCell = newRow.insertCell(3);
 
-        // Добавляем поле ввода для имени
         const nameInput = document.createElement('input');
         nameInput.type = 'text';
         nameInput.className = 'edit-input';
         nameCell.appendChild(nameInput);
 
-        // Добавляем поле ввода для email
         const emailInput = document.createElement('input');
         emailInput.type = 'text';
         emailInput.className = 'edit-input';
         emailCell.appendChild(emailInput);
 
-        // Добавляем кнопку "Сохранить"
         const saveButton = document.createElement('button');
         saveButton.innerText = 'Сохранить';
         saveButton.onclick = function () {
             saveNewUser(newRow, nameInput, emailInput);
         };
 
-        // Добавляем кнопку "Отмена"
         const cancelButton = document.createElement('button');
         cancelButton.innerText = 'Отмена';
         cancelButton.onclick = function () {
@@ -314,7 +305,6 @@
         }
     }
 
-    // Функция для парсинга строки в формате application/x-www-form-urlencoded
     function parseQueryString(queryString) {
         const params = new URLSearchParams(queryString);
         const result = {};
